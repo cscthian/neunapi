@@ -27,19 +27,15 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # django cors configuration
 # cors configuration
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:8080',
-    'http://127.0.0.1:8000'
-]
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_URLS_REGEX = r'^/api/.*$'
+
 
 CORS_ALLOW_METHODS = (
-    'DELETE',
     'GET',
     'OPTIONS',
-    'PATCH',
-    'POST',
-    'PUT',
 )
+
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_IMAGE_BACKEND = 'pillow'

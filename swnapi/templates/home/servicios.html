@@ -1,0 +1,40 @@
+{% extends "home/base_home.html" %}
+
+{% load static %}
+
+{% block title %} Servicios REST API para practicas {% endblock %}
+
+{% block description %} api gratuitas para practicar vuejs reactjs y otros frontend {% endblock description %}
+
+{% block tags %} api gratuitas para programacion web {% endblock tags %}
+
+{% block content %}
+    {% include "includes/header.html" %}
+    
+    <div class="grid-container fluid" style="padding: 2em;">
+        <div class="grid-x grid-margin-x">
+            <div class="cell small-12 medium-3 large-2">
+                <ul class="vertical menu">
+                    {% for servicio in servicios  %}
+                        <li>
+                            <a
+                                {% url 'home_app:servicios-detail' servicio.id as home_url %}
+                                {% if request.get_full_path == home_url %}
+                                    class="active-link"
+                                {% else %} 
+                                    class="link" 
+                                {% endif %}
+                                href="{% url 'home_app:servicios-detail' servicio.id %}">
+                                {{ servicio.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="cell samll-12 medium-9 large-10">
+                <p> {{ object.content | safe }} </p>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

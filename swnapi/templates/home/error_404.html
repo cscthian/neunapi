@@ -1,0 +1,27 @@
+{% extends "home/base_home.html" %}
+
+{% load static %}
+
+{% block title %}Api Web para pruebas - neunapp {% endblock %}
+
+{% block description %} Servicios REST gratuitos para hacer practicas en desarrollo frontend.  {% endblock description %}
+
+{% block tags %} servicios rest gratis, api gratis, api para programacion web{% endblock tags %}
+
+{% block content %}
+    {% include "includes/header.html" %}
+    
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="grid-y grid-margin-y align-center">
+                <div class="cell small-12 medium-9 large-6">
+                    <div class="callout alert">
+                        <h1 style="font-size: 18px; font-weight: bold;">Ups, aun no tenemos esta pagina :(</h1>
+                        <a href="{% url 'home_app:index' %}">Volve a inicio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

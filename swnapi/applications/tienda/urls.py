@@ -15,4 +15,14 @@ urlpatterns = [
         views.ProductListView.as_view(),
         name='producto-lista',
     ),
+    path(
+        'api/tienda/categorias/lista/', 
+        views.CategoryListView.as_view(),
+        name='categorias-lista',
+    ),
+    path(
+        'api/tienda/colores/lista/', 
+        views.ColorsListView.as_view(),
+        name='colores-lista',
+    ),
 ]

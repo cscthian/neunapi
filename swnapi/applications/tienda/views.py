@@ -27,7 +27,7 @@ from .models import Product, Category, Colors
 
 
 class ProductDetailViewSet(RetrieveAPIView):
-    lookup_field = 'pk' 
+    lookup_field = 'id' 
     permission_classes = (AllowAny,)
     serializer_class = ProductSerializer
     queryset = Product.objects.filter(publicado=True)
@@ -50,8 +50,20 @@ class ProductListView(ListAPIView):
         queryset = Product.objects.por_categoria(
             name = self.request.query_params.get('name', ''),
             category = self.request.query_params.get('category', ''),
-            colors = self.request.query_params.get('colors', []),
+            colors = self.request.query_params.get('colors', ''),
             order = self.request.query_params.get('order', 'populares'),
         )
 
         return queryset
+
+
+class CategoryListView(ListAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
+
+
+class ColorsListView(ListAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = ColorsSerializer
+    queryset = Colors.objects.all()

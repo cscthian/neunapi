@@ -27,8 +27,7 @@ class ColorsAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     ordering = ['visits']
     list_display = (
-        'name',
-        'model',        
+        'name',       
         'publicado',
         'visits',
         
