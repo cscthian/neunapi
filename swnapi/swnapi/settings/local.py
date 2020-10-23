@@ -46,6 +46,38 @@ CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery
 # ckeditor
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'Full',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline',],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['TextColor', 'Format', 'FontSize', 'Link'],
+            ['Smiley', 'Image', 'Iframe'],
+            ['RemoveFormat', 'Source'],
+        ],
+        'height': '100%',
+        'width': '100%',
+        'linkShowAdvancedTab': False,
+        'linkShowTargetTab': False,
+        'youtube_responsive': True,
+        'youtube_disabled_fields': [
+            'txtWidth',
+            'txtHeight',
+            'txtEmbed',
+        ],
+        'extraPlugins': ','.join([
+            'image2',
+            'div',
+            'autolink',
+            'autoembed',
+            'embedsemantic',
+            'autogrow',
+            'widget',
+            'lineutils',
+            'clipboard',
+            'dialog',
+            'dialogui',
+            'elementspath',
+        ]),
     },
 }
+

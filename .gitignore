@@ -42,4 +42,4 @@ swnapi/media/*
 swnapi/manage.py
 swnapi/swnapi/settings/prod.py
 swnapi/swnapi/wsgi.py
-#swnapi/secret.json
+swnapi/secret.json
