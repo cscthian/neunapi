@@ -12,7 +12,9 @@ from applications.home.views import Error404View, Error505View
 urlpatterns = [
     path('administrar/', admin.site.urls),
     path('', include('applications.tienda.urls'), name="tienda"),
-    path('', include('applications.home.urls'), name="home")
+    path('', include('applications.home.urls'), name="home"),
+
+    path('', include('applications.cursos.routes')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = Error404View.as_view()

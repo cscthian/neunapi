@@ -67,3 +67,7 @@ class ColorsListView(ListAPIView):
     permission_classes = (AllowAny,)
     serializer_class = ColorsSerializer
     queryset = Colors.objects.all()
+
+
+
+

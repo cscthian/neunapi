@@ -30,9 +30,12 @@ class ProductAdmin(admin.ModelAdmin):
         'name',       
         'publicado',
         'visits',
+        'id',
+
         
     )
     search_fields = ('name', )
+    list_filter = ('category', 'colors', )
     filter_horizontal = (
         'category',
         'colors',
