@@ -69,7 +69,7 @@ class Product(models.Model):
         max_digits=10, 
         decimal_places=3
     )
-    decription = RichTextField(
+    description = RichTextField(
         'Descripcion del Producto'
     )
     main_image = models.ImageField(

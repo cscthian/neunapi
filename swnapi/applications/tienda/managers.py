@@ -18,14 +18,13 @@ class ProductMananger(models.Manager):
         ).order_by('-visits')
 
         if (len(filters['category']) > 4):
-            consulta.filter(
-                publicado=True,
+            consulta = consulta.filter(
                 category__name_unique=filters['category'],
             )
         
         colores = filters['colors'].split(',')
         if len(filters['colors']) > 0:
-            consulta.filter(
+            consulta = consulta.filter(
                 publicado=True,
                 colors__id__in=colores,
             )

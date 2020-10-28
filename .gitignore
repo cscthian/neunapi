@@ -43,3 +43,4 @@ swnapi/manage.py
 swnapi/swnapi/settings/prod.py
 swnapi/swnapi/wsgi.py
 swnapi/secret.json
+swnapi/applications/cursos/migrations
