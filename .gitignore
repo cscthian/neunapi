@@ -50,3 +50,8 @@ swnapi/swnapi/settings/prod.py
 swnapi/swnapi/wsgi.py
 swnapi/secret.json
 swnapi/applications/cursos/migrations
+swnapi/applications/cursos/__pycache__
+swnapi/applications/__pycache__
+swnapi/applications/home/__pycache__
+swnapi/applications/home/migrations/__pycache__
+swnapi/swnapi/__pycache__
