@@ -13,7 +13,7 @@ from .serializers import (
 class CursoViewSet(viewsets.ModelViewSet):
     """  """
     serializer_class = CursoSerializer
-    queryset = Curso.objects.all()
+    queryset = Curso.objects.all().order_by('name')
     pagination_class = PaginationSerializer
 
     def get_permissions(self):

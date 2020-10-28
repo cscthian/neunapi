@@ -4,6 +4,6 @@ from . import viewsets
 
 router = DefaultRouter()
 
-router.register(r'cursos', viewsets.CursoViewSet, basename='curso')
+router.register(r'api/cursos', viewsets.CursoViewSet, basename='curso')
 
 urlpatterns = router.urls
