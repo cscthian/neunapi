@@ -13,6 +13,7 @@ urlpatterns = [
     path('administrar/', admin.site.urls),
     path('', include('applications.tienda.urls'), name="tienda"),
     path('', include('applications.home.urls'), name="home"),
+    path('', include('applications.examen.urls'), name="examen"),
 
     path('', include('applications.cursos.routes')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

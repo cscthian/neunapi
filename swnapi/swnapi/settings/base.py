@@ -40,6 +40,7 @@ LOCAL_APPS = (
     'applications.home',
     'applications.tienda',
     'applications.cursos',
+    'applications.examen',
 )
 
 THIRD_PARTY_APPS = (
