@@ -44,6 +44,7 @@ swnapi/applications/home/migrations/*
 swnapi/applications/tienda/migrations/*
 swnapi/applications/tips/migrations/*
 swnapi/applications/examen/migrations/*
+swnapi/applications/sheriff/migrations/*
 swnapi/media/*
 
 swnapi/manage.py
