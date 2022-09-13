@@ -22,9 +22,8 @@ from .models import HomeSheriff, Mapa, Agente, Clip
 # Create your views here.
 class GetHomeSheriff(RetrieveAPIView):
     serializer_class = HomeSheriffSerializer
-    # authentication_classes = [TokenAuthentication]
-    # permission_classes = [IsAuthenticated]
-    permission_classes = (AllowAny,)
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def retrieve(self, request, *args, **kwargs):
         home = HomeSheriff.objects.all()[0]
