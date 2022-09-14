@@ -54,7 +54,7 @@ class AgentesListView(ListAPIView):
         resultado = Agente.objects.filter(
           name__icontains = self.request.query_params.get('name', ''),
           public=True,
-        ).order_by('order')
+        ).order_by('-visits','order')
 
         return resultado
 

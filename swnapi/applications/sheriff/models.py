@@ -104,7 +104,7 @@ class Clip(models.Model):
         null=True
     )
     video = models.URLField(blank=True)
-    video_id = models.CharField('video id', max_length=10)
+    video_id = models.CharField('video id', max_length=30)
     tiempo = models.CharField('tiempo', max_length=5)
     likes = models.PositiveIntegerField(default=0)
 
