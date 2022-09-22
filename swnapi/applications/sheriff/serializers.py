@@ -65,21 +65,13 @@ class AgenteSerializer(serializers.ModelSerializer):
         else:
             return FULL_DOMAIN + '/static/img/noimage.png'
     
-    def get_image_uno(self, obj):
-        if obj.image_uno:
-            return FULL_DOMAIN + obj.image_uno.url
-        else:
-            return FULL_DOMAIN + '/static/img/noimage.png'
     
-    def get_image_dos(self, obj):
-        if obj.image_dos:
-            return FULL_DOMAIN + obj.image_dos.url
-        else:
-            return FULL_DOMAIN + '/static/img/noimage.png'
 
 
 class ClipSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
+    image_uno = serializers.SerializerMethodField()
+    image_dos = serializers.SerializerMethodField()
     agente_name = serializers.SerializerMethodField()
     mapa_name = serializers.SerializerMethodField()
     
@@ -91,6 +83,8 @@ class ClipSerializer(serializers.ModelSerializer):
             'mapa',
             'name',
             'image',
+            'image_uno',
+            'image_dos',
             'video',
             'video_id',
             'tiempo',
@@ -102,6 +96,18 @@ class ClipSerializer(serializers.ModelSerializer):
     def get_image(self, obj):
         if obj.image:
             return FULL_DOMAIN + obj.image.url
+        else:
+            return FULL_DOMAIN + '/static/img/noimage.png'
+    
+    def get_image_uno(self, obj):
+        if obj.image_uno:
+            return FULL_DOMAIN + obj.image_uno.url
+        else:
+            return FULL_DOMAIN + '/static/img/noimage.png'
+    
+    def get_image_dos(self, obj):
+        if obj.image_dos:
+            return FULL_DOMAIN + obj.image_dos.url
         else:
             return FULL_DOMAIN + '/static/img/noimage.png'
     
