@@ -14,6 +14,10 @@ urlpatterns = [
         views.AgentesListView.as_view(),
     ),
     path(
+        'api/sheriff/list-by-map/agentes/', 
+        views.AgentesByMapaListView.as_view(),
+    ),
+    path(
         'api/sheriff/list/mapas/', 
         views.MapasListView.as_view(),
     ),

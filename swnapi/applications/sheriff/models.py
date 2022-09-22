@@ -91,8 +91,16 @@ class Agente(models.Model):
 
 class Clip(models.Model):
 
-    agente = models.ForeignKey(Agente, on_delete=models.CASCADE, verbose_name='agente_clip')
-    mapa = models.ForeignKey(Mapa, on_delete=models.CASCADE, verbose_name='mapa_clip')
+    agente = models.ForeignKey(
+        Agente, 
+        on_delete=models.CASCADE, 
+        verbose_name='agente_clip',
+        related_query_name='agente_clip',)
+    mapa = models.ForeignKey(
+        Mapa, 
+        on_delete=models.CASCADE, 
+        verbose_name='mapa_clip', 
+        related_query_name='mapa_clip',)
     name = models.CharField(
         'nombre', 
         max_length=50
@@ -100,6 +108,18 @@ class Clip(models.Model):
     image = models.ImageField(
         'Imagen logo', 
         upload_to='sheriffLogo',
+        blank=True,
+        null=True
+    )
+    image_uno = models.ImageField(
+        'Imagen uno', 
+        upload_to='sheriffimg',
+        blank=True,
+        null=True
+    )
+    image_dos = models.ImageField(
+        'Imagen dos', 
+        upload_to='sheriffimg',
         blank=True,
         null=True
     )

@@ -58,6 +58,19 @@ class AgentesListView(ListAPIView):
 
         return resultado
 
+class AgentesByMapaListView(ListAPIView):
+    pagination_class = PaginationSerializer
+    permission_classes = (AllowAny,)
+    serializer_class = AgenteSerializer
+    
+    def get_queryset(self):
+        resultado = Agente.objects.filter(
+          agente_clip__mapa__id = self.request.query_params.get('mapa', ''),
+          public=True,
+        ).distinct().order_by('-visits','order')
+        print(resultado)
+        return resultado
+
 
 class ClipsListView(ListAPIView):
     pagination_class = PaginationSerializer
