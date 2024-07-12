@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
 
-class SheriffConfig(AppConfig):
-    name = 'sheriff'
+class LibroConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'applications.sheriff'

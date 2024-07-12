@@ -38,6 +38,7 @@ DJANGO_APPS = (
 
 LOCAL_APPS = (
     'applications.home',
+    'applications.portfolio',
     'applications.tienda',
     'applications.cursos',
     'applications.examen',
@@ -48,8 +49,6 @@ THIRD_PARTY_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'ckeditor',
-    'ckeditor_uploader',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS

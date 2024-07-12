@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from ckeditor.fields import RichTextField
+from django_quill.fields import QuillField
 
 
 class HomeSheriff(models.Model):
@@ -47,7 +47,7 @@ class Mapa(models.Model):
         null=True
     )
     color = models.CharField('color', max_length=10, blank=True)
-    description = RichTextField(
+    description = QuillField(
         'Descripcion Mapa',
         blank=True,
     )
@@ -76,7 +76,7 @@ class Agente(models.Model):
         null=True
     )
     color = models.CharField('color', max_length=10, blank=True)
-    contenido = RichTextField(
+    contenido = QuillField(
         'Descripcion Mapa'
     )
     public = models.BooleanField(default=True)

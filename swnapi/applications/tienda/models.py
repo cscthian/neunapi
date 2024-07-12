@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from ckeditor.fields import RichTextField
+from django_quill.fields import QuillField
 
 # Django
 from django.conf import settings
@@ -69,7 +69,7 @@ class Product(models.Model):
         max_digits=10, 
         decimal_places=3
     )
-    description = RichTextField(
+    description = QuillField(
         'Descripcion del Producto'
     )
     main_image = models.ImageField(

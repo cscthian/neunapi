@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from ckeditor.fields import RichTextField
+from django_quill.fields import QuillField
 
 # Django
 from django.conf import settings
@@ -14,7 +14,7 @@ class Servicios(models.Model):
         'nombre', 
         max_length=120
     )
-    content = RichTextField(
+    content = QuillField(
         'contenido'
     )
     video = models.URLField(blank=True)

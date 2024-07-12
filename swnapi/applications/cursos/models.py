@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from ckeditor.fields import RichTextField
+from django_quill.fields import QuillField
 
 
 class Curso(models.Model):
@@ -16,7 +16,7 @@ class Curso(models.Model):
         max_digits=10, 
         decimal_places=3
     )
-    decription = RichTextField(
+    decription = QuillField(
         'Descripcion del Producto'
     )
     image = models.ImageField(
