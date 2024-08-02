@@ -1,3 +1,6 @@
+from datetime import timedelta, datetime
+from django.template.defaultfilters import slugify
+
 from django.db import models
 
 # Create your models here.
@@ -5,60 +8,9 @@ from django.contrib.postgres.fields import ArrayField
 from django_quill.fields import QuillField
 
 # Django
-
-class Blog(models.Model):
-    """ Blog personal  """
-
-    PROYECTO = 'P'
-    IDNI = 'I'
-    ENTRADA = 'E'
-    TIPE_BLOG = [
-      (PROYECTO, 'Proyecto'),
-      (IDNI, 'Proyecto INDI'),
-      (ENTRADA, 'Blog'),
-    ]
-    
-    type_blog = models.CharField(
-      'Tipo blog', 
-      max_length=1,
-      choices=TIPE_BLOG
-    )
-    title = models.CharField(
-        'titulo', 
-        max_length=120
-    )
-    resume = models.CharField(
-      'Resumen Blog', 
-      max_length=150
-    )
-    content = QuillField()
-    image = models.ImageField(
-        'Imagen Blog', 
-        upload_to='blog-portfolio',
-        blank=True,
-        null=True
-    )
-    tags = ArrayField(
-      models.CharField(max_length=50), 
-      blank=True
-    )
-    publicado = models.BooleanField(default=False)
-    video = models.URLField(blank=True)
-    date = models.DateField('Fecha Publicacion')
-    visits = models.PositiveIntegerField()
-    order = models.PositiveIntegerField()
-
-    class Meta:
-        verbose_name = 'Blog Portfolio'
-        verbose_name_plural = 'Blogs'
-
-    def __str__(self):
-        return self.title
-
-        
 class HomePortfolio(models.Model):
     """ Home de portafolio  """
-
+    title_mov = models.CharField('titulo en movil', max_length=100)
     title = models.CharField(
         'titulo', 
         max_length=120
@@ -77,7 +29,6 @@ class HomePortfolio(models.Model):
         blank=True,
         null=True
     )
-    content = QuillField()
     text_footer = models.CharField(
       'Mensaje Footer', 
       max_length=200
@@ -109,10 +60,90 @@ class HomePortfolio(models.Model):
     def __str__(self):
         return self.title
 
+        
+class Blog(models.Model):
+    """ Blog personal  """
+
+    PROYECTO = 'P'
+    IDNI = 'I'
+    ENTRADA = 'B'
+    TIPE_BLOG = [
+      (PROYECTO, 'Proyecto'),
+      (IDNI, 'Proyecto INDI'),
+      (ENTRADA, 'Blog'),
+    ]
+    
+    portfolio = models.ForeignKey(HomePortfolio, on_delete=models.CASCADE)
+    type_blog = models.CharField(
+      'Tipo blog', 
+      max_length=1,
+      choices=TIPE_BLOG
+    )
+    title = models.CharField(
+        'titulo', 
+        max_length=120
+    )
+    resume = models.TextField(
+      'Resumen Blog', 
+      max_length=170
+    )
+    image = models.ImageField(
+        'Imagen Blog', 
+        upload_to='blog-portfolio',
+        blank=True,
+        null=True
+    )
+    type_article = models.CharField(
+      'Topo Articulo', 
+      max_length=30,
+      blank=True
+    )
+    tags = ArrayField(
+      models.CharField(max_length=50), 
+      blank=True
+    )
+    publicado = models.BooleanField(default=False)
+    video = models.URLField(blank=True)
+    date = models.DateField('Fecha Publicacion')
+    visits = models.PositiveIntegerField()
+    order = models.PositiveIntegerField()
+    content = QuillField()
+    slug = models.SlugField(
+        max_length=250,
+        blank=True
+    )
+
+    class Meta:
+        verbose_name = 'Blog Portfolio'
+        verbose_name_plural = 'Blogs'
+
+    def __str__(self):
+        return self.title
+    
+    def save(self, *args, **kwargs):
+        if not self.id:
+            # calculamos el total de segundos de la hora actual
+            now = datetime.now()
+            total_time = timedelta(
+                hours=now.hour,
+                minutes=now.minute,
+                seconds=now.second
+            )
+            seconds = int(total_time.total_seconds())
+            slug_unique = '%s %s' % (self.title, str(seconds))
+        else:
+            # seconds = self.slug.split('-')[-1]  # recuperamos los segundos
+            slug_unique = self.slug
+
+        self.slug = slugify(slug_unique)
+        super(Blog, self).save(*args, **kwargs)
+
+
 
 class Skills(models.Model):
     """ Habilidades Portfolio  """
 
+    portfolio = models.ForeignKey(HomePortfolio, on_delete=models.CASCADE)
     title = models.CharField(
         'titulo', 
         max_length=120
@@ -142,6 +173,7 @@ class Skills(models.Model):
 class Experience(models.Model):
     """ Experiencia laboral portfolio  """
 
+    portfolio = models.ForeignKey(HomePortfolio, on_delete=models.CASCADE)
     title = models.CharField(
         'titulo', 
         max_length=120
@@ -162,8 +194,8 @@ class Experience(models.Model):
     order = models.PositiveIntegerField()
 
     class Meta:
-        verbose_name = 'Skills portfolio'
-        verbose_name_plural = 'Skills portfolio'
+        verbose_name = 'Experiencia Laboral'
+        verbose_name_plural = 'Experiencia Laboral'
 
     def __str__(self):
         return self.title

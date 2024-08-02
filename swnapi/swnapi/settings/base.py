@@ -38,6 +38,7 @@ DJANGO_APPS = (
 
 LOCAL_APPS = (
     'applications.home',
+    'applications.neun',
     'applications.portfolio',
     'applications.tienda',
     'applications.cursos',
@@ -49,6 +50,7 @@ THIRD_PARTY_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    'django_quill',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
